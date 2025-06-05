@@ -14,4 +14,4 @@ docs/
 .env
 
 #foundry lib
-lib/
+forge-std/
