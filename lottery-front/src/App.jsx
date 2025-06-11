@@ -5,8 +5,8 @@ import Web3 from "web3";
 function App() {
   return (
     <main>
-      <div className="bg-black w-full h-screen bg-center bg-cover absolute z-0">
-        <h1 className="text-white">Lottery Dapp</h1>
+      <div className="gap-1">
+        <h1 className="text-6xl text-gradient">Lottery Dapp</h1>
         <ConnectButton />
       </div>
     </main>
