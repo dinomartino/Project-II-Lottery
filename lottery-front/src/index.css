@@ -1,10 +1,6 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-button {
-  @apply bg-[#808080] text-white font-bold py-2 px-4 rounded;
-}
-
 @layer base {
   body {
     font-optical-sizing: auto;
@@ -27,8 +23,8 @@ button {
     @apply sm:mt-10 mt-5;
   }
 
-  header img {
-    @apply w-full max-w-lg h-auto object-contain mx-auto drop-shadow-md;
+  button {
+    @apply bg-[#808080] text-white font-bold py-2 px-4 rounded;
   }
 }
 
