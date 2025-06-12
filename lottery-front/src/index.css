@@ -24,7 +24,7 @@
   }
 
   button {
-    @apply bg-[#808080] text-white font-bold py-2 px-4 rounded;
+    @apply bg-[#8080805d] text-white font-bold py-2 px-4 rounded hover:bg-[#80808080] cursor-pointer;
   }
 }
 

@@ -1,0 +1,15 @@
+import ConnectButton from "./ConnectButton";
+import React from "react";
+
+function Navbar() {
+  return (
+    <nav className="relative flex justify-end items-center bg-[#1e292383] rounded-b-lg px-4 py-3 sm:px-4 sm:py-5">
+      <h1 className="text-gradient absolute inset-0">Lottery Dapp</h1>
+      <div>
+        <ConnectButton />
+      </div>
+    </nav>
+  );
+}
+
+export default Navbar;

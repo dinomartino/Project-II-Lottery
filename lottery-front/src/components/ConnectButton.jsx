@@ -19,12 +19,7 @@ function ConnectButton() {
 
   return (
     <div>
-      <button
-        className="text-cyan-300 flex flex-col cursor-pointer z-0"
-        onClick={connect}
-      >
-        Connect
-      </button>
+      <button onClick={connect}>Connect</button>
     </div>
   );
 }
