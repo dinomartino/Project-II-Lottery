@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import ConnectContext from "../ConnectContext";
 import Web3 from "web3";
 
 function ConnectButton() {
-  const [isConnected, setIsConnected] = useState(false);
+  const { isConnected, setIsConnected } = useContext(ConnectContext);
   const [account, setAccount] = useState(null);
 
   async function connect() {
