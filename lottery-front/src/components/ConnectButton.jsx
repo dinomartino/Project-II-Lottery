@@ -16,7 +16,6 @@ function ConnectButton() {
       });
       const selectedAccount = accounts[0];
       setAccount(selectedAccount);
-      console.log("the connected acc is: ", account);
       setIsConnected(true);
     } catch (error) {
       console.error(error);
