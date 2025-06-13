@@ -1,7 +1,10 @@
-import React from "react";
+import { useState } from "react";
 import Web3 from "web3";
 
 function ConnectButton() {
+  const [isConnected, setIsConnected] = useState(false);
+  const [account, setAccount] = useState(null);
+
   async function connect() {
     try {
       if (!window.ethereum) {
@@ -11,16 +14,26 @@ function ConnectButton() {
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
-      const account = accounts[0];
+      const selectedAccount = accounts[0];
+      setAccount(selectedAccount);
+      console.log("the connected acc is: ", account);
+      setIsConnected(true);
     } catch (error) {
       console.error(error);
     }
   }
 
-  return (
-    <div>
-      <button onClick={connect}>Connect</button>
-    </div>
+  function truncateAddress(address) {
+    return address ? `${address.slice(0, 6)}...${address.slice(-4)}` : "";
+  }
+
+  return isConnected ? (
+    <button disabled={true} className="text-sm">
+      Connected Wallet:
+      <span className="text-gradient">{truncateAddress(account)}</span>
+    </button>
+  ) : (
+    <button onClick={connect}>Connect</button>
   );
 }
 
