@@ -39,3 +39,7 @@
 @utility text-gradient {
   @apply bg-linear-to-r from-[#16d59f] to-[#AB8BFF] bg-clip-text text-transparent;
 }
+
+@utility text-gradient-reverse {
+  @apply bg-linear-to-r from-[#AB8BFF] to-[#16d59f] bg-clip-text text-transparent;
+}
