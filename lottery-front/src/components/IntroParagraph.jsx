@@ -1,6 +1,6 @@
 function IntroParagragh() {
   return (
-    <div className="text-white flex-col border-1 border-white bg-[#8080804b] rounded-xl sm:px-10 sm:py-3 ml-48 mr-48 open-sans">
+    <div className=" flex-col border-1 border-[#ffffff9a] bg-[#8080804b] text-white rounded-xl sm:px-10 sm:py-3 ml-48 mr-48 open-sans">
       <h2 className="text-xl font-bold text-white mb-1 text-center">
         About My Lottery DApp
       </h2>
