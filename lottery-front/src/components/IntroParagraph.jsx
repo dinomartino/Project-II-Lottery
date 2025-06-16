@@ -5,8 +5,15 @@ function IntroParagragh() {
         About My Lottery DApp
       </h2>
       <p className="mb-1">
-        My Lottery DApp is a decentralized application built on Ethereum Speolia
-        testnet, allowing users to participate in a transparent and fair lottery
+        My Lottery DApp is a decentralized application built on{" "}
+        <a
+          target="_blank"
+          href="https://sepolia.etherscan.io/address/0x7D2c93843CA0C242635ac33A6FBc1d8387f3da58"
+          className="text-blue-400"
+        >
+          Ethereum Speolia testnet
+        </a>
+        , allowing users to participate in a transparent and fair lottery
         system. As the contract owner, you can start a new lottery round,
         setting the stage for players to join. Anyone can enter by paying a
         small entrance fee, which contributes to the prize pool. Once the
