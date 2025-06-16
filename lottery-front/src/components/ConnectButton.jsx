@@ -1,10 +1,9 @@
 import { useState, useContext } from "react";
 import ConnectContext from "../ConnectContext";
-import Web3 from "web3";
 
 function ConnectButton() {
   const { isConnected, setIsConnected } = useContext(ConnectContext);
-  const [account, setAccount] = useState(null);
+  const { account, setAccount } = useContext(ConnectContext);
 
   async function connect() {
     try {
@@ -28,10 +27,13 @@ function ConnectButton() {
   }
 
   return isConnected ? (
-    <button disabled={true} className="text-sm">
-      Connected Wallet:
-      <span className="text-gradient">{truncateAddress(account)}</span>
-    </button>
+    <>
+      {console.log("wallet connected!")}
+      <button disabled={true} className="text-sm">
+        Connected Wallet:
+        <span className="text-gradient">{truncateAddress(account)}</span>
+      </button>
+    </>
   ) : (
     <button onClick={connect}>Connect</button>
   );
