@@ -7,10 +7,6 @@ function ConnectButton() {
 
   async function connect() {
     try {
-      if (!window.ethereum) {
-        throw new Error("MetaMask is not install");
-      }
-
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
@@ -29,7 +25,7 @@ function ConnectButton() {
   return isConnected ? (
     <>
       {console.log("wallet connected!")}
-      <button disabled={true} className="text-sm">
+      <button disabled={true} className="text-sm ">
         Connected Wallet:
         <span className="text-gradient">{truncateAddress(account)}</span>
       </button>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ConnectContext from "./ConnectContext";
 import Navbar from "./components/Navbar";
 import IntroParagragh from "./components/IntroParagraph";
+import MainFunction from "./components/mainFunction";
 import Web3 from "web3";
 import { abi, contractAddress } from "./contractInfo";
 
@@ -10,7 +11,6 @@ function App() {
   const [contract, setContract] = useState(null);
   const [account, setAccount] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
-  let lottery;
 
   useEffect(() => {
     async function initWeb3() {
@@ -52,10 +52,13 @@ function App() {
           setAccount,
         }}
       >
-        <Navbar isConnected={isConnected} setIsConnected={setIsConnected} />
+        <Navbar />
         <br />
         <br />
         <IntroParagragh />
+        <br />
+        <br />
+        <MainFunction />
       </ConnectContext.Provider>
     </main>
   );
