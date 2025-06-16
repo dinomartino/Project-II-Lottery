@@ -24,7 +24,7 @@ function ConnectButton() {
 
   return isConnected ? (
     <>
-      {console.log("wallet connected!")}
+      {console.log("wallet connected!", isConnected)}
       <button disabled={true} className="text-sm ">
         Connected Wallet:
         <span className="text-gradient">{truncateAddress(account)}</span>
