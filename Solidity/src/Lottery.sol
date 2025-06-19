@@ -18,7 +18,6 @@
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
-
 contract Lottery {
     uint256 private immutable i_interval;
     uint256 private immutable i_entranceFee;
