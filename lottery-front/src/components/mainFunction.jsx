@@ -67,7 +67,7 @@ function MainFunction() {
               </>
             </div>
             <div className="flex flex-col justify-center gap-10 ml-28 mr-28 text-2xl">
-              <div className="flex flex-col items-center w-fit chakra-petch-bold text-center  w-full">
+              <div className="flex flex-col items-center chakra-petch-bold text-center  w-full">
                 PRIZEPOOL
                 <span className=" text-[#FFD700]"> {showResult} ETH</span>
               </div>
