@@ -11,6 +11,7 @@ function App() {
   const [contract, setContract] = useState(null);
   const [account, setAccount] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
+  const [participants, setParticipants] = useState([]);
 
   useEffect(() => {
     async function initWeb3() {
@@ -41,6 +42,13 @@ function App() {
         console.log("Contract not initialized yet");
         return;
       }
+
+      // Fetch initial participants
+      const initialParticipants = await contractInstance.methods
+        .getParticipants()
+        .call();
+      setParticipants(initialParticipants);
+
       // console.log("Contract events:", contractInstance.events);
 
       // Subscribe to Enter_lottery event
@@ -69,8 +77,10 @@ function App() {
           contract,
           account,
           isConnected,
+          participants,
           setIsConnected,
           setAccount,
+          setParticipants,
         }}
       >
         <Navbar />

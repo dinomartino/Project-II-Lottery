@@ -1,14 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ConnectContext from "../ConnectContext";
 
 function MainFunction() {
-  const { isConnected, account, contract } = useContext(ConnectContext);
+  const { isConnected, account, contract, participants } =
+    useContext(ConnectContext);
 
   async function startLottery() {
     const check = await contract.methods.isOpen().call();
-    console.log("isOpen:", check);
+    // console.log("isOpen:", check);
     await contract.methods.startLottery().send({ from: account });
-    // console.log();
   }
 
   async function enterLottery() {
@@ -23,8 +23,8 @@ function MainFunction() {
   return (
     <>
       {isConnected ? (
-        <section className="relative flex items-center gap-2 bg-[#8080804b] rounded-xl sm:px-10 sm:py-3 ml-10 mr-10 min-h-[300px]">
-          <div className="flex flex-col h-40 justify-between ">
+        <section className="flex items-center gap-10 bg-[#8080804b] rounded-xl sm:px-10 sm:py-3 ml-10 mr-10 min-h-[300px]">
+          <div className="flex flex-col h-40 justify-between  w-40">
             <button onClick={startLottery}>Start Lottery</button>
             <button
               onClick={enterLottery}
@@ -33,6 +33,25 @@ function MainFunction() {
               <span className="text-[#b0f5fc]">Enter Lottery</span>
             </button>
             <button onClick={pickWinner}>Pick Winner</button>
+          </div>
+          <div className=" w-full min-h-[260px] rounded-xl flex text-white">
+            <div className="pl-5 pt-2 text-lg">
+              Current participants:
+              <br />
+              <>
+                {participants.length > 0 ? (
+                  <ul className="pl-6">
+                    {participants.map((address, index) => (
+                      <li key={index} className="">
+                        {address}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="pl-6">No participants yet</p>
+                )}
+              </>
+            </div>
           </div>
         </section>
       ) : (

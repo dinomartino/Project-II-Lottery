@@ -5,8 +5,10 @@ const ConnectContext = createContext({
   contract: null,
   account: null,
   isConnected: false,
+  participants: [],
   setIsConnected: () => {},
   setAccount: () => {},
+  setParticipants: () => {},
 });
 
 export default ConnectContext;
