@@ -12,6 +12,8 @@ function App() {
   const [account, setAccount] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const [participants, setParticipants] = useState([]);
+  const [prizepool, setPrizepool] = useState(0);
+  const [winner, setWinner] = useState(null);
 
   useEffect(() => {
     async function initWeb3() {
@@ -49,6 +51,16 @@ function App() {
         .call();
       setParticipants(initialParticipants);
 
+      // initial prize pool check
+      const initialPrizepool = await contractInstance.methods.getPool().call();
+      setPrizepool(initialPrizepool);
+      console.log("Current prize pool:", initialPrizepool);
+
+      // check last winner
+      const initialWinner = await contractInstance.methods.getWinner().call();
+      setWinner(initialWinner);
+      console.log("Last winner is:", initialWinner);
+
       // console.log("Contract events:", contractInstance.events);
 
       // Subscribe to Enter_lottery event
@@ -78,6 +90,8 @@ function App() {
           account,
           isConnected,
           participants,
+          prizepool,
+          winner,
           setIsConnected,
           setAccount,
           setParticipants,
