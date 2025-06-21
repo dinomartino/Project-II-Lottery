@@ -2,7 +2,7 @@
 
 A decentralized lottery application built on Ethereum using Solidity smart contracts and a React frontend. The smart contract allows an owner to start a lottery, users to enter by paying an entrance fee, and the owner to pick a winner after a set interval, distributing 95% of the prize pool to the winner and 5% as a commission. The React frontend provides a user-friendly interface to connect a wallet, view the prize pool, participants, and last winner, and interact with the lottery (start, enter, or pick winner).
 
-![alt text](<螢幕截圖 2025-06-21 下午5.40.02.png>)
+![alt text](show.png)
 
 ## Table of Contents
 
