@@ -57,8 +57,8 @@ The Lottery DApp is deployed on the Sepolia testnet and enables a transparent, b
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/dinomartino/Project-II-Lottery
+cd Project-II-Lottery
 ```
 
 ### 2. Set Up Smart Contract
@@ -128,7 +128,7 @@ Update `lottery-front/src/contractInfo.js` with the deployed contract address an
 In the `/lottery-front` directory:
 
 ```bash
-npm start
+npm run dev
 ```
 
 Open `http://localhost:3000` in your browser, connect MetaMask to the local network (or Sepolia), and interact with the dApp:
@@ -146,8 +146,6 @@ Run Foundry tests (create tests in `test/` directory, e.g., `test/Lottery.t.sol`
 ```bash
 forge test -vvv
 ```
-
-The GitHub Actions workflow (`.github/workflows/ci.yml`) automatically runs tests on push or pull requests.
 
 ## Deployment
 
