@@ -44,17 +44,17 @@ function App() {
       // console.log("Contract events:", contractInstance.events);
 
       // Subscribe to Enter_lottery event
-      await contractInstance.events.Enter_lottery().on("data", (event) => {
+      contractInstance.events.Enter_lottery().on("data", (event) => {
         console.log(event.returnValues.player);
       });
 
       // Subscribe to Picked_winner event
-      await contractInstance.events.Picked_winner().on("data", (event) => {
+      contractInstance.events.Picked_winner().on("data", (event) => {
         console.log(event.returnValues.winner);
       });
 
       // Subscribe to Lottery_starts event
-      await contractInstance.events.Lottery_starts().on("data", (event) => {
+      contractInstance.events.Lottery_starts().on("data", (event) => {
         console.log(event.returnValues.startingTime);
       });
     }
