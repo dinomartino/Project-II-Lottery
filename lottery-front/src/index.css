@@ -3,6 +3,7 @@
 
 @layer base {
   body {
+    font-family: "Chakra Petch", sans-serif;
     font-optical-sizing: auto;
     background: #030014;
   }
