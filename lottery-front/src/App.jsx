@@ -16,6 +16,8 @@ function App() {
   const [winner, setWinner] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     async function initWeb3() {
       if (!window.ethereum) {
         throw new Error("MetaMask is not install");
@@ -49,34 +51,62 @@ function App() {
       const initialParticipants = await contractInstance.methods
         .getParticipants()
         .call();
-      setParticipants(initialParticipants);
+      if (isMounted) setParticipants(initialParticipants);
 
       // initial prize pool check
       const initialPrizepool = await contractInstance.methods.getPool().call();
-      setPrizepool(initialPrizepool);
+      if (isMounted) setPrizepool(initialPrizepool);
       console.log("Current prize pool:", initialPrizepool);
 
       // check last winner
       const initialWinner = await contractInstance.methods.getWinner().call();
-      setWinner(initialWinner);
+      if (isMounted) setWinner(initialWinner);
       console.log("Last winner is:", initialWinner);
 
       // console.log("Contract events:", contractInstance.events);
 
       // Subscribe to Enter_lottery event
-      contractInstance.events.Enter_lottery().on("data", (event) => {
-        console.log(event.returnValues.player);
+      contractInstance.events.Enter_lottery().on("data", async (event) => {
+        console.log("Enter_lottery event:", event.returnValues.player);
+        if (isMounted) {
+          const updatedParticipants = await contractInstance.methods
+            .getParticipants()
+            .call();
+          const updatedPrizepool = await contractInstance.methods
+            .getPool()
+            .call();
+          setParticipants(updatedParticipants);
+          setPrizepool(updatedPrizepool);
+        }
       });
 
       // Subscribe to Picked_winner event
-      contractInstance.events.Picked_winner().on("data", (event) => {
-        console.log(event.returnValues.winner);
+      contractInstance.events.Picked_winner().on("data", async (event) => {
+        console.log("Picked_winner event:", event.returnValues.winner);
+        if (isMounted) {
+          setWinner(event.returnValues.winner);
+          setParticipants([]);
+          setPrizepool("0");
+        }
       });
 
       // Subscribe to Lottery_starts event
-      contractInstance.events.Lottery_starts().on("data", (event) => {
+      contractInstance.events.Lottery_starts().on("data", async (event) => {
         console.log(event.returnValues.startingTime);
       });
+      return () => {
+        isMounted = false;
+        enterLotterySubscription.unsubscribe((error) => {
+          if (error) console.error("Error unsubscribing Enter_lottery:", error);
+        });
+        pickedWinnerSubscription.unsubscribe((error) => {
+          if (error) console.error("Error unsubscribing Picked_winner:", error);
+        });
+        lotteryStartsSubscription.unsubscribe((error) => {
+          if (error)
+            console.error("Error unsubscribing Lottery_starts:", error);
+        });
+      };
     }
     initWeb3();
   }, []);
